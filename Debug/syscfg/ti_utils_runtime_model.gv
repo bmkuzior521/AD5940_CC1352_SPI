@@ -1,0 +1,53 @@
+digraph Model
+{
+    graph[rankdir=LR]
+
+    // mod.$name=/ti/devices/CCFG
+    ti_devices_CCFG -> ti_devices_CCFG_CCFGCC26XXTemplate0
+
+    // mod.$name=/ti/devices/CCFG/CCFGCC26XXTemplate
+
+    // mod.$name=/ti/devices/DriverLib
+
+    // mod.$name=/ti/display/Display
+    CONFIG_Display_0 -> ti_drivers_Board
+    CONFIG_Display_0 -> CONFIG_UART2_0
+
+    // mod.$name=/ti/drivers/Board
+    ti_drivers_Board -> ti_drivers_GPIO
+    ti_drivers_Board -> ti_devices_DriverLib
+
+    // mod.$name=/ti/drivers/DMA
+    ti_drivers_DMA -> ti_drivers_Board
+
+    // mod.$name=/ti/drivers/GPIO
+
+    // mod.$name=/ti/drivers/Power
+    ti_drivers_Power -> ti_devices_CCFG
+    ti_drivers_Power -> ti_drivers_Board
+
+    // mod.$name=/ti/drivers/SPI
+    CONFIG_SPI_MASTER -> ti_drivers_DMA
+    CONFIG_SPI_MASTER -> ti_drivers_Power
+    CONFIG_SPI_MASTER -> ti_drivers_Board
+    CONFIG_SPI_MASTER -> CONFIG_GPIO_SPI_MASTER_SCLK
+    CONFIG_SPI_MASTER -> CONFIG_GPIO_SPI_MASTER_MISO
+    CONFIG_SPI_MASTER -> CONFIG_GPIO_SPI_MASTER_MOSI
+    CONFIG_SPI_MASTER -> CONFIG_GPIO_SPI_MASTER_SS
+
+    // mod.$name=/ti/drivers/Timer
+    CONFIG_TIMER_0 -> ti_drivers_Power
+    CONFIG_TIMER_0 -> ti_drivers_Board
+    CONFIG_TIMER_0 -> CONFIG_GPTIMER_0
+
+    // mod.$name=/ti/drivers/UART2
+    CONFIG_UART2_0 -> ti_drivers_DMA
+    CONFIG_UART2_0 -> ti_drivers_Power
+    CONFIG_UART2_0 -> ti_drivers_Board
+    CONFIG_UART2_0 -> CONFIG_GPIO_UART2_0_TX
+    CONFIG_UART2_0 -> CONFIG_GPIO_UART2_0_RX
+
+    // mod.$name=/ti/drivers/timer/GPTimerCC26XX
+    CONFIG_GPTIMER_0 -> ti_drivers_Power
+    CONFIG_GPTIMER_0 -> ti_drivers_Board
+}
